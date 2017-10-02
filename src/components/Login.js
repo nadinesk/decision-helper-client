@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { signupUser } from '../actions/userActions.js'
+import { loginUser } from '../actions/userActions.js'
 
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: ''};
+    this.state = {username: '', redirect: false};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount() {
+    const current_user = localStorage.getItem('current_user')
+    
+    this.setState({
+      current_user: current_user
+    })  
+  }
+  
 
   handleChange(event) {
     this.setState({username: event.target.value});
@@ -19,8 +28,7 @@ class Signup extends React.Component {
 
   handleSubmit(event) {
    event.preventDefault()            
-    let username = Object.assign({}, this.state)
-    
+    let username = Object.assign({}, this.state)    
     this.props.actions(username)
   }
 
@@ -28,6 +36,8 @@ class Signup extends React.Component {
     return (
       <div>
 	      <h1> Login page </h1> 
+        {this.props.current_user ? <h2>{this.props.current_user.username} </h2> : ''}
+        <h3> {this.state.current_user_id} </h3>
 	      <form onSubmit={this.handleSubmit}>
 	        <label>
 	          Name:
@@ -41,11 +51,11 @@ class Signup extends React.Component {
 }
 
 function mapDispatchToProps(dispatch){
-  return {actions: bindActionCreators(signupUser, dispatch)}
+  return {actions: bindActionCreators(loginUser, dispatch)}
 }
 
 function mapStateToProps(state){
-  return { redirect: state.redirect}
+  return { current_user: state.user.current_user}
 }
 
 Signup = connect(mapStateToProps, mapDispatchToProps)(Signup)

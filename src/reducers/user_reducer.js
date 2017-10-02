@@ -14,6 +14,18 @@ export default function userReducer(state = {}, action) {
 			redirect: false, 
 			error: action.error
 			}
+	case 'LOGIN_SUCCESS': 
+		return {
+				...state, 			
+			current_user: action.user
+			}
+	case 'LOGIN_FAILURE': 
+		return {
+				...state, 			
+			current_user: '',
+			redirect: false, 
+			error: action.error
+			}
 		
 
     default: 

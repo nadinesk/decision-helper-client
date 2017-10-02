@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch';
 export function signupUser(user) {      
   
   return function(dispatch) {        
-    return fetch('https://stark-garden-80644.herokuapp.com/api/v1/users', {
+    return fetch('http://localhost:3200/api/v1/users', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -15,7 +15,7 @@ export function signupUser(user) {
       .then(res => res.json())
     
       .then((responseJson) => { 
-        console.log('responseJson', responseJson)
+        
         if (!responseJson.error)  {
           dispatch({type: 'SIGNUP_SUCCESS', redirect: true }) 
         } else {
@@ -26,10 +26,12 @@ export function signupUser(user) {
   }
 }
 
+
+
 export function loginUser(user) {      
   
   return function(dispatch) {        
-    return fetch('https://stark-garden-80644.herokuapp.com/api/v1/login', {
+    return fetch('http://localhost:3200/api/v1/login', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -40,9 +42,11 @@ export function loginUser(user) {
       .then(res => res.json())
     
       .then((responseJson) => { 
-        console.log('responseJson', responseJson)
+        console.log('responseJson', responseJson.user)
         if (!responseJson.error)  {
-          dispatch({type: 'LOGIN_SUCCESS', redirect: true }) 
+          dispatch({type: 'LOGIN_SUCCESS', user: responseJson.user }) 
+          localStorage.setItem('current_user', JSON.stringify(responseJson.user))
+          debugger
         } else {
           dispatch({type: 'LOGIN_FAILURE', error: responseJson.error })
         }
@@ -50,3 +54,7 @@ export function loginUser(user) {
        
   }
 }
+
+
+
+
