@@ -10,6 +10,7 @@ import NavBar from './components/NavBar'
 import LinkPage from './components/LinkPage'
 import User from './components/User'
 import Decision from './components/Decision'
+import Items from './components/Items'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -55,12 +56,13 @@ class App extends Component {
           
 
             
-              <Route path="/signup" component= {Signup}  />
-              <Route path="/login" component={Login} />
-              <Route path="/" component={Home} />
-              <Route path="/linkpage" component={LinkPage} />
-              <Route path="/user" component={User} />
-              <Route path="/decision" component={Decision} />
+              <Route exact path="/signup" component= {Signup}  />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/linkpage" component={LinkPage} />
+              <Route exact path="/user" component={User} />
+              <Route exact path="/decision" component={Decision} />
+              <Route path="/decisions/:id" component={Items} />
             </div> 
     
           </Router>

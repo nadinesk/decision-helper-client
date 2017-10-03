@@ -14,7 +14,7 @@ class Decision extends React.Component {
     super(props);
     this.state = { 
     				currentUser: '', 
-                  	loggedin: false
+            loggedin: false
                   };
 
     

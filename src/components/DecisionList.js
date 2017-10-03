@@ -1,6 +1,12 @@
 
 import React, { Component } from 'react'
 import Items from './Items'
+import {  
+   BrowserRouter as Router,
+  Route,
+  Link, 
+  render
+} from 'react-router-dom'
 
 export default class DecisionList extends Component {
 
@@ -34,20 +40,19 @@ export default class DecisionList extends Component {
 	
 		const decisions_map = this.props.decisions.map((decision) => (
             <div>
-            	    <p key={decision.id} >
-                    {decision.title}  
+            	    <p key={decision.id} onClick={() => this.setDecision(decision.id)} >
+                    <Link to={`/decisions/${decision.id}`} > {decision.title}  </Link> 
                     
                     </p>
-                        <div> 
-                        this.state.currentDecision
-                        ?
-                        <Items decision={this.state.currentDecision} />
-                        :
-                        <h4>click a decision to see items</h4>
+
+                    
+                        
+                    
+                     
             </div>   
     			
                 
-            </div> 
+           
         ))    
   
   	return (
@@ -55,6 +60,9 @@ export default class DecisionList extends Component {
     	
     	
     				{decisions_map} 
+                    
+                   
+                      
     	
     </div>
   )

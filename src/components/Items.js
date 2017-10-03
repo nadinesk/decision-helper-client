@@ -1,47 +1,69 @@
-
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchItems } from '../actions/itemActions.js'
+import ItemList from './ItemList'
 
-export default class Items extends Component {
+class Items extends Component {
 
 
  constructor(props) {
         super(props)
 
+        this.state = { 
+    				currentDecision: '', 
+    				currentUser: ''
+                  };
+
        
     }
 
     componentDidMount() {
-    	this.setCurrentDecision()
+    	
+      const current_user_string = localStorage.getItem('current_user')
+      	var currentUser = JSON.parse(current_user_string)
+    	const currentDecisionId = parseInt(this.props.match.params.id)
+      
+  		this.setState({
+          	currentUser: currentUser, 
+          	currentDecisionId: currentDecisionId,         	
+          }) 
+      
+        this.props.actions(currentUser.id, currentDecisionId)
+
+
     }	
 
     
  	render() {
-		
-		const decisions_map = this.props.decisions.map((decision) => (
-            <div>
-            	    <p key={decision.id} >
-                    {decision.title}  
-                    
-                    </p>
-                        <div> 
-                        this.state.currentDecision
-                        ?
-                        <Items decision={this.state.currentDecision} />
-                        :
-                        <h4>click a decision to see items</h4>
-            </div>   
-    			
-                
-            </div> 
-        ))    
-  
+		console.log('this.props items', this.props.items)
   	return (
-    <div><br />
-    	
-    	
-    				{decisions_map} 
-    	
-    </div>
+          <div> 
+          <h3>Items </h3> 
+
+            <br />                           
+            <div> 
+             {this.props.items ? <ItemList items={this.props.items} /> : <h4>Nothing yet...</h4>}  
+            </div>   
+
+                                             
+          
+        </div>
   )
   }
 }
+
+
+function mapDispatchToProps(dispatch){
+  return {actions: bindActionCreators(fetchItems, dispatch)}
+}
+
+function mapStateToProps(state){
+  
+  return { items: state.items.items}
+}
+
+Items = connect(mapStateToProps, mapDispatchToProps)(Items)
+
+
+export default Items
