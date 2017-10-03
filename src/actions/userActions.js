@@ -1,5 +1,13 @@
 import fetch from 'isomorphic-fetch';
 
+const receivedDecisions = decisions => {
+  
+  return {
+    type: 'RECEIVED_DECISIONS',
+    decisions
+  }
+}
+
 
 export function signupUser(user) {      
   
@@ -46,7 +54,7 @@ export function loginUser(user) {
         if (!responseJson.error)  {
           dispatch({type: 'LOGIN_SUCCESS', user: responseJson.user }) 
           localStorage.setItem('current_user', JSON.stringify(responseJson.user))
-          debugger
+          
         } else {
           dispatch({type: 'LOGIN_FAILURE', error: responseJson.error })
         }
@@ -54,7 +62,5 @@ export function loginUser(user) {
        
   }
 }
-
-
 
 

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import {
+  
+  Redirect
+} from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { loginUser } from '../actions/userActions.js'
 
@@ -14,10 +18,10 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
-    const current_user = localStorage.getItem('current_user')
+    const currentUser = localStorage.getItem('current_user')
     
     this.setState({
-      current_user: current_user
+      currentUser: currentUser
     })  
   }
   
@@ -33,11 +37,13 @@ class Signup extends React.Component {
   }
 
   render() {
+    if (this.state.currentUser || this.props.currentUser) {
+      return  <Redirect to = '/home' /> 
+    } else 
     return (
       <div>
 	      <h1> Login page </h1> 
-        {this.props.current_user ? <h2>{this.props.current_user.username} </h2> : ''}
-        <h3> {this.state.current_user_id} </h3>
+        
 	      <form onSubmit={this.handleSubmit}>
 	        <label>
 	          Name:
@@ -55,7 +61,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state){
-  return { current_user: state.user.current_user}
+  return { currentUser: state.user.current_user}
 }
 
 Signup = connect(mapStateToProps, mapDispatchToProps)(Signup)

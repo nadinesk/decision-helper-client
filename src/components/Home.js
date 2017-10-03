@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Home extends React.Component {
   constructor(props) {
    super(props);
-     this.state = {current_user: '', 
+     this.state = {currentUser: '', 
 				  
 				  };
 
@@ -14,10 +14,10 @@ class Home extends React.Component {
   
   componentDidMount() {
 	  	const current_user_string = localStorage.getItem('current_user')
-	    const current_user = JSON.parse(current_user_string)
+	    const currentUser = JSON.parse(current_user_string)
 	    
 	    this.setState({
-	      current_user: current_user
+	      currentUser: currentUser
 	    })  
 	}
   
@@ -28,11 +28,11 @@ class Home extends React.Component {
   }
   
   render() {
-  
+  	  console.log('home currentUser', this.state)	
       return (
       <div> 
-        <h3 className="errorText"> Welcome, {this.state.current_user.username} </h3> 
-        <button onClick={this.handleOnClick}> Logout </button> 
+        <h3 className="errorText"> Welcome </h3> 
+        
        </div> 
   
     );

@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
+  
+  Redirect
 } from 'react-router-dom'
 import { signupUser } from '../actions/userActions.js'
 
