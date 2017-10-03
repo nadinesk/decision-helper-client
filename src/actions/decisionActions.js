@@ -22,6 +22,28 @@ export function fetchDecisions(user_id) {
   }
 }
 
+export function addDecision(user_id, decision) {      
+  return function(dispatch) {    
+    dispatch({type: 'POST_DECISION'})
+    return fetch(`http://localhost:3200/api/v1/users/${user_id}/decisions`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ decision: decision})      
+    })
+      .then(res => res.json())
+      .then(responseJson => {          
+          //dispatch({type: 'FETCH_BOOKS', payload: responseJson.book});
+          
+      })
+
+
+
+  }
+}
+
 
 
 

@@ -10,6 +10,7 @@ import NavBar from './components/NavBar'
 import LinkPage from './components/LinkPage'
 import User from './components/User'
 import Decision from './components/Decision'
+import AddDecision from './components/DecisionForm'
 import Items from './components/Items'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -63,6 +64,7 @@ class App extends Component {
               <Route exact path="/user" component={User} />
               <Route exact path="/decisions" component={Decision} />
               <Route path="/decisions/:id" component={Items} />
+              <Route exact path="/decision/new" component={AddDecision} />
             </div> 
     
           </Router>

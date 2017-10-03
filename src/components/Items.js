@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchItems } from '../actions/itemActions.js'
 import ItemList from './ItemList'
+import  AddItem  from './ItemForm'
 
 class Items extends Component {
 
@@ -21,7 +22,7 @@ class Items extends Component {
     componentDidMount() {
     	
       const current_user_string = localStorage.getItem('current_user')
-      	var currentUser = JSON.parse(current_user_string)
+      var currentUser = JSON.parse(current_user_string)
     	const currentDecisionId = parseInt(this.props.match.params.id)
       
   		this.setState({
@@ -36,7 +37,7 @@ class Items extends Component {
 
     
  	render() {
-		console.log('this.props items', this.props.items)
+		console.log('currenddecisionid', this.state.currentDecisionId)
   	return (
           <div> 
           <h3>Items </h3> 
@@ -45,7 +46,7 @@ class Items extends Component {
             <div> 
              {this.props.items ? <ItemList items={this.props.items} /> : <h4>Nothing yet...</h4>}  
             </div>   
-
+              <AddItem decision = {this.state.currentDecisionId} /> 
                                              
           
         </div>
