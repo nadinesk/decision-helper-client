@@ -61,7 +61,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/linkpage" component={LinkPage} />
               <Route exact path="/user" component={User} />
-              <Route exact path="/decision" component={Decision} />
+              <Route exact path="/decisions" component={Decision} />
               <Route path="/decisions/:id" component={Items} />
             </div> 
     

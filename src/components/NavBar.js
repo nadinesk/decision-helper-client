@@ -33,6 +33,7 @@ class Navbar extends Component {
                   <li><NavLink to="/">Home</NavLink></li>
                   <li><NavLink to="/" onClick={this.handleLogout}>Log Out</NavLink></li>
                   <li> <NavLink to="/user"> {this.props.currentUser.username}</NavLink></li>
+                  <li> <NavLink to="/decisions"> Decisions </NavLink></li>
                 </ul>
               </div>
               
