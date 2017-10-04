@@ -20,19 +20,7 @@ class AddDecision extends Component {
         }
     }
 
-    componentDidMount() {
-    
-    const current_user_string = localStorage.getItem('current_user')
-    var currentUser = JSON.parse(current_user_string)
-
-    console.log('currentUser componentdidmoutn', currentUser)
-    if (currentUser) {
-      this.setState({
-      currentUser: currentUser, 
-      loggedin: true
-    }) 
-    } 
-  }
+   
 
     handleInputChange(event) {
 
@@ -46,19 +34,13 @@ class AddDecision extends Component {
     handleOnSubmit(event){
       event.preventDefault()            
       let decision = Object.assign({}, this.state)
-      this.props.addDecision(this.state.currentUser.id, decision)
+      this.props.addDecision(this.props.currentUser.id, decision)
       
    }
 
 
     render() {
-         console.log('submitsuccess', this.props.decisions.submitSuccess)
-
-         if (this.props.decisions.submitSuccess) {
-      		return  <Redirect to = '/decisions' /> 
-    	 } else 
-  
-
+        
         return (
           <div>
           

@@ -33,7 +33,7 @@ export function addItem(user_id, decision_id, item) {
       .then(res => res.json())
       .then(responseJson => {          
         console.log('responseJson', responseJson.item) 
-        dispatch({type: 'POST_SUCCESS', item: responseJson.item})
+        dispatch({type: 'POST_ITEM_SUCCESS', item: responseJson.item})
         
           
       })

@@ -37,8 +37,9 @@ export default class DecisionList extends Component {
     }
 
  	render() {
-	
+  	
 		const decisions_map = this.props.decisions.map((decision) => (
+        
             <div>
             	    <p key={decision.id} onClick={() => this.setDecision(decision.id)} >
                     <Link to={`/decisions/${decision.id}`} > {decision.title}  </Link> 

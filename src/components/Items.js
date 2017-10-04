@@ -37,14 +37,15 @@ class Items extends Component {
 
     
  	render() {
-		console.log('currenddecisionid', this.state.currentDecisionId)
+		
+    
   	return (
           <div> 
           <h3>Items </h3> 
 
             <br />                           
             <div> 
-             {this.props.items ? <ItemList items={this.props.items} /> : <h4>Nothing yet...</h4>}  
+             {this.props.items.length > 0 ? <ItemList items={this.props.items} /> : <h4>Nothing yet...</h4>}  
             </div>   
               <AddItem decision = {this.state.currentDecisionId} /> 
                                              

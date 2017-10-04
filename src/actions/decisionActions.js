@@ -35,7 +35,7 @@ export function addDecision(user_id, decision) {
     })
       .then(res => res.json())
       .then(responseJson => {          
-          //dispatch({type: 'FETCH_BOOKS', payload: responseJson.book});
+         dispatch({type: 'POST_SUCCESS', decision: responseJson.decision})
           
       })
 

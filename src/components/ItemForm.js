@@ -43,9 +43,9 @@ class AddItem extends Component {
     handleOnSubmit(event){
       event.preventDefault()            
       let item = Object.assign({}, this.state)
-      debugger
-      this.props.addItem(this.state.currentUser.id, this.props.decision, item)
       
+      this.props.addItem(this.state.currentUser.id, this.props.decision, item)
+
    }
 
 
@@ -63,7 +63,7 @@ class AddItem extends Component {
                       placeholder="Description"/>
 
                      <input
-                      type="numeric"
+                      type="number"
                       name="weight"
                       onChange={(event) => this.handleInputChange(event)}              
                       placeholder="Weight"/>
