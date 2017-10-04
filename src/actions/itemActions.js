@@ -21,8 +21,7 @@ export function fetchItems(user_id, decision_id) {
 }
 
 export function addItem(user_id, decision_id, item) {      
-  return function(dispatch) {    
-    dispatch({type: 'POST_ITEM'})
+  return function(dispatch) {        
     return fetch(`http://localhost:3200/api/v1/users/${user_id}/decisions/${decision_id}/items`, {
       method: 'POST',
       headers: {
@@ -33,7 +32,9 @@ export function addItem(user_id, decision_id, item) {
     })
       .then(res => res.json())
       .then(responseJson => {          
-          //dispatch({type: 'FETCH_BOOKS', payload: responseJson.book});
+        console.log('responseJson', responseJson.item) 
+        dispatch({type: 'POST_SUCCESS', item: responseJson.item})
+        
           
       })
 

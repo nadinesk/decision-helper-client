@@ -61,7 +61,7 @@ function mapDispatchToProps(dispatch){
 
 function mapStateToProps(state){
   
-  return { items: state.items.items}
+  return { items: state.items}
 }
 
 Items = connect(mapStateToProps, mapDispatchToProps)(Items)
