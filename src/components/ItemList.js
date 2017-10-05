@@ -17,7 +17,7 @@ class ItemList extends Component {
 
    
     handleClick(item) {
-        debugger
+        
         this.props.deleteItem(this.props.currentUser.id, this.props.currentDecisionId, item)
         
     }
@@ -29,7 +29,7 @@ class ItemList extends Component {
             <div>
             	    <p key={item.id} >
                     {item.description}  | {item.category } | {item.weight}
-                    <button type="submit" onClick={() => this.handleClick(item)}>Delete</button>                     
+                    <button type="submit" onClick={() => this.handleClick(item)}>Delete</button>
                     </p>
                         
                 

@@ -44,6 +44,26 @@ export function addDecision(user_id, decision) {
   }
 }
 
+export function deleteDecision(user_id, decision) {      
+  const decision_id = decision.id
+  return function(dispatch) {        
+     debugger
+     return fetch(`http://localhost:3200/api/v1/users/${user_id}/decisions/${decision_id}`,  {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ decision: decision})  
+      })         
+      .then(res =>  res.json())
+      .then(responseJson => {                              
+         debugger
+         dispatch(receivedDecisions(responseJson.decisions))        
+    })   
+
+  }
+}
 
 
 

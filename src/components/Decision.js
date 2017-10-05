@@ -43,7 +43,7 @@ class Decision extends React.Component {
 
             <br />                           
             <div> 
-             {this.props.decisions.length > 0 ? <DecisionList decisions={this.props.decisions} /> : <h4>Nothing yet...</h4>}  
+             {this.props.decisions.length > 0 ? <DecisionList decisions={this.props.decisions} currentUser={this.state.currentUser} /> : <h4>Nothing yet...</h4>}  
             </div>   
 
              <AddDecision currentUser={this.state.currentUser} />                                 

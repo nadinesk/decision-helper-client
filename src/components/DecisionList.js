@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react'
 import Items from './Items'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import {  
    BrowserRouter as Router,
   Route,
@@ -8,7 +10,9 @@ import {
   render
 } from 'react-router-dom'
 
-export default class DecisionList extends Component {
+import { deleteDecision } from '../actions/decisionActions.js'
+
+class DecisionList extends Component {
 
 
  constructor(props) {
@@ -36,24 +40,23 @@ export default class DecisionList extends Component {
         })
     }
 
+     handleClick(decision) {
+        
+        this.props.deleteDecision(this.props.currentUser.id, decision)
+        
+    }
+
+
  	render() {
   	
 		const decisions_map = this.props.decisions.map((decision) => (
         
             <div>
-            	    <p key={decision.id} onClick={() => this.setDecision(decision.id)} >
-                    <Link to={`/decisions/${decision.id}`} > {decision.title}  </Link> 
-                    
-                    </p>
-
-                    
-                        
-                    
-                     
+              <p key={decision.id} onClick={() => this.setDecision(decision.id)} >
+                <Link to={`/decisions/${decision.id}`} > {decision.title}  </Link> 
+                <button type="submit" onClick={() => this.handleClick(decision)}>Delete</button>                    
+              </p>   
             </div>   
-    			
-                
-           
         ))    
   
   	return (
@@ -69,3 +72,17 @@ export default class DecisionList extends Component {
   )
   }
 }
+
+function mapDispatchToProps(dispatch){
+  return {deleteDecision: bindActionCreators(deleteDecision, dispatch)}
+}
+
+
+DecisionList = connect(null, mapDispatchToProps)(DecisionList)
+
+
+
+export default DecisionList
+
+
+

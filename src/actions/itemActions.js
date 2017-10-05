@@ -14,8 +14,7 @@ export function fetchItems(user_id, decision_id) {
     //dispatch({type: 'FETCH_BOOKS'})
     return fetch(`http://localhost:3200/api/v1/users/${user_id}/decisions/${decision_id}/items`)      
       .then(res =>  res.json())
-      .then(responseJson => {                     
-        debugger
+      .then(responseJson => {                             
         dispatch(receivedItems(responseJson.items))        
     })   
   }
@@ -58,7 +57,7 @@ export function deleteItem(user_id, decision_id, item) {
       })         
       .then(res =>  res.json(console.log('asdasfasdfasfasfdasf')))
       .then(responseJson => {                     
-         debugger
+         
          dispatch(receivedItems(responseJson.items))        
     })   
 
