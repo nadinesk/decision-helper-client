@@ -15,7 +15,9 @@ class AddDecision extends Component {
         super(props)
           this.state = {          
             
-
+                        formErrors: {title: ''},
+            titleValid: false,
+            formValid: false
 
         }
     }
@@ -28,15 +30,47 @@ class AddDecision extends Component {
 
         this.setState({
             [name]: value,
-        });
+        }, () => { this.validateField(name, value) });
     }
 
     handleOnSubmit(event){
       event.preventDefault()            
       let decision = Object.assign({}, this.state)
       this.props.addDecision(this.props.currentUser.id, decision)
+      this.setState({
+        title: '', 
+         
+         formValid: false
+      })
+      event.target.reset()
       
    }
+
+    validateField(fieldName, value) {
+      let fieldValidationErrors = this.state.formErrors;
+      let titleValid = this.state.titleValid;
+    
+      switch(fieldName) {
+        case 'title':
+          titleValid = value.length !== ''; 
+          fieldValidationErrors.title = titleValid ? '' : ' must include a book title';
+          break;      
+        default:
+          break;
+    }
+      this.setState({formErrors: fieldValidationErrors,
+        titleValid: titleValid,        
+      }, this.validateForm);
+  }
+
+    validateForm() {
+      this.setState({formValid: this.state.titleValid});
+    }
+
+    errorClass(error) {
+      return(error.length === 0 ? '' : 'has-error');
+    }
+
 
 
     render() {
@@ -52,7 +86,7 @@ class AddDecision extends Component {
                       placeholder="Title"/>
                     
                   
-                  <button type="submit" >Submit </button>
+                  <button type="submit" disabled={!this.state.formValid} >Submit </button>
                 </form>      
 
               

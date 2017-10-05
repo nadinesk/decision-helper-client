@@ -7,6 +7,7 @@ import {
  Redirect
 } from 'react-router-dom'
 import  Items  from './Items'
+import { FormErrors } from './FormErrors';
 
 
 
@@ -14,9 +15,16 @@ class AddItem extends Component {
 
     constructor(props) {
         super(props)
-          this.state = {          
-            
-
+           this.state = {          
+            category: 'pro', 
+            formErrors: {description: ''},
+            descriptionValid: false,
+            weightValid: false,
+            categoryValid: false,
+            formValid: false, 
+            description: '', 
+            weight: ''
+           
         }
     }
 
@@ -37,7 +45,7 @@ class AddItem extends Component {
 
         this.setState({
             [name]: value,
-        });
+        }, () => { this.validateField(name, value) });
     }
 
     handleOnSubmit(event){
@@ -46,7 +54,60 @@ class AddItem extends Component {
       
       this.props.addItem(this.state.currentUser.id, this.props.decision, item)
 
+    
+      this.setState({
+        weight: 0, 
+        descrption: '', 
+        formValid: false
+      })
+
+        event.target.reset()
+
+     
+
    }
+
+    validateField(fieldName, value) {
+      let fieldValidationErrors = this.state.formErrors;
+      let descriptionValid = this.state.descriptionValid;
+      let weightValid = this.state.weightValid;
+      let categoryValid = this.state.categoryValid;
+    
+      switch(fieldName) {
+        case 'description':
+          descriptionValid = value.length > 0; 
+          fieldValidationErrors.description = descriptionValid ? '' : ' must include a description';
+          
+         case 'weight':
+          weightValid = value > 0; 
+          fieldValidationErrors.weight = weightValid ? '' : ' must include a weight';
+         
+       
+        default:
+          
+    }
+      this.setState({formErrors: fieldValidationErrors,
+        descriptionValid: descriptionValid,  
+        weightValid: weightValid,            
+        categoryValid: categoryValid,      
+      }, this.validateForm);
+  }
+
+    validateForm() {
+     
+       var vStatus = (this.state.weightValid == false || this.state.descriptionValid == false) ? false : true
+       console.log('this.state.weightValid', !this.state.weightValid)
+       console.log('this.state.descriptionValid', !this.state.descriptionValid)
+       console.log(vStatus)
+
+      this.setState({formValid: vStatus, 
+
+            });
+    }
+
+    errorClass(error) {
+      return(error.length === 0 ? '' : 'has-error');
+    }
 
 
     render() {
@@ -54,7 +115,7 @@ class AddItem extends Component {
          
         return (
           <div>
-          
+                 <FormErrors formErrors={this.state.formErrors} />
                   <form onSubmit={this.handleOnSubmit.bind(this)}>
                     <input
                       type="text"
@@ -68,14 +129,13 @@ class AddItem extends Component {
                       onChange={(event) => this.handleInputChange(event)}              
                       placeholder="Weight"/>
 
-                      <input
-                      type="text"
-                      name="category"
-                      onChange={(event) => this.handleInputChange(event)}              
-                      placeholder="Category"/>
+                      <select name="category" value = {this.state.category} onChange={(event) => this.handleInputChange(event)} >
+          <option value="pro">pro</option>
+          <option value="con">con</option>
+        </select>
                     
                   
-                  <button type="submit" >Submit </button>
+                  <button type="submit" disabled={!this.state.formValid}>Submit </button>
                 </form>      
 
                 
