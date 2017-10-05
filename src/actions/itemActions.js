@@ -14,8 +14,9 @@ export function fetchItems(user_id, decision_id) {
     //dispatch({type: 'FETCH_BOOKS'})
     return fetch(`http://localhost:3200/api/v1/users/${user_id}/decisions/${decision_id}/items`)      
       .then(res =>  res.json())
-      .then(items => {                     
-        dispatch(receivedItems(items))        
+      .then(responseJson => {                     
+        debugger
+        dispatch(receivedItems(responseJson.items))        
     })   
   }
 }
@@ -32,13 +33,34 @@ export function addItem(user_id, decision_id, item) {
     })
       .then(res => res.json())
       .then(responseJson => {          
-        console.log('responseJson', responseJson.item) 
+        
         dispatch({type: 'POST_ITEM_SUCCESS', item: responseJson.item})
         
           
       })
 
 
+
+  }
+}
+
+
+export function deleteItem(user_id, decision_id, item) {      
+  
+  return function(dispatch) {        
+     return fetch(`http://localhost:3200/api/v1/users/${user_id}/decisions/${decision_id}/items/${item.id}`,  {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ item: item})  
+      })         
+      .then(res =>  res.json(console.log('asdasfasdfasfasfdasf')))
+      .then(responseJson => {                     
+         debugger
+         dispatch(receivedItems(responseJson.items))        
+    })   
 
   }
 }

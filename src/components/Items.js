@@ -45,7 +45,7 @@ class Items extends Component {
 
             <br />                           
             <div> 
-             {this.props.items.length > 0 ? <ItemList items={this.props.items} /> : <h4>Nothing yet...</h4>}  
+             {this.props.items.length > 0 ? <ItemList items={this.props.items} currentUser={this.state.currentUser} currentDecisionId={this.state.currentDecisionId} /> : <h4>Nothing yet...</h4>}  
             </div>   
               <AddItem decision = {this.state.currentDecisionId} /> 
                                              
