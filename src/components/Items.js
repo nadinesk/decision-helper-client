@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchItems } from '../actions/itemActions.js'
+import { Form, FormGroup, ControlLabel, Col, FormControl, Button, Grid, Row } from 'react-bootstrap'
 import ItemList from './ItemList'
 import  AddItem  from './ItemForm'
 
@@ -32,7 +33,7 @@ class Items extends Component {
       
         this.props.actions(currentUser.id, currentDecisionId)
 
-
+           document.body.style.backgroundColor = "#e5ffe5";
     }	
 
     
@@ -67,19 +68,40 @@ class Items extends Component {
     var adviceGiven = proWeightsSum > conWeightsSum ? "Do it!" : "Don't do it!"
 
   	return (
-          <div> 
-          <h3>Items </h3> 
-             <AddItem decision = {this.state.currentDecisionId} /> 
-            <br />                           
-            <div> 
-             {this.props.items.length > 0 ? <ItemList items={this.props.items} currentUser={this.state.currentUser} currentDecisionId={this.state.currentDecisionId} /> : <h4>Nothing yet...</h4>}  
-            </div>   
-             
-        <h3> Pros: {proWeightsSum} </h3>                                             
-        <h3> Cons: {conWeightsSum} </h3>    
-        <h3> Advice: {adviceGiven} </h3>                                             
-          
-        </div>
+          <Grid> 
+            <Row> 
+              <Col md={1}/>
+              <Col md={10}>
+                <h3>Items </h3> 
+                <AddItem decision = {this.state.currentDecisionId} /> 
+                <br />                                         
+                
+                {this.props.items.length > 0 ? <ItemList items={this.props.items}  proItems={proItems} conItems={conItems} currentUser={this.state.currentUser} currentDecisionId={this.state.currentDecisionId} /> : <h4>Nothing yet...</h4>}  
+                
+              </Col> 
+              <Col md={1}/>
+             </Row>
+             <Row > 
+              <Col md={2}/>
+              <Col  md={4}>             
+                <h3> Pros Weight Total: {proWeightsSum} </h3>                                             
+
+              </Col>
+
+              <Col  md={4}>             
+                <h3> Cons Weight Total: {conWeightsSum} </h3>    
+              </Col>
+              <Col md={2}/>
+              </Row>
+              <Row> 
+                <Col md={2}/>
+                <Col className="item-list" md={8}>
+                  <h3> Advice: {adviceGiven} </h3>                                             
+                </Col> 
+                <Col md={2}/>
+              </Row>
+
+        </Grid>
   )
   }
 }

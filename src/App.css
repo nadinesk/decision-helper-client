@@ -37,3 +37,55 @@
   font-size: 5em;
   margin-top: 50%;
 }
+
+ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.decision-list {
+  border-radius: 5px;
+  background-color: white;   
+  padding: 15px;
+  margin: 10px
+}
+
+a {
+  color: black;
+}
+
+.decision-list-delete, .item-list-delete {
+  border: 0px ;
+  margin-left: 50%;
+  color: #d3d3d3;
+}
+
+.item-form-weight, .item-form-category {
+  margin-right: 5%;
+}
+
+.item-description {
+  text-overflow: ellipsis;
+}
+
+.item-list {
+  border-radius: 5px;
+  background-color: white;   
+  padding: 15px;
+  margin: 5px
+}
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 2em;
+    margin-right: 1em;
+    border-style: inset;
+    border-width: 1px;
+} 
+
+.item-form-weight, .item-form-category {
+  width: 10%;
+}

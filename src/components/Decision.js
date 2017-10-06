@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux'
 import { fetchDecisions } from '../actions/decisionActions.js'
 import DecisionList from './DecisionList.js'
 import AddDecision from './DecisionForm.js'
+import { Form, FormGroup, ControlLabel, Col, FormControl, Button, Grid, Row } from 'react-bootstrap'
 
 
 class Decision extends React.Component {
@@ -33,22 +34,27 @@ class Decision extends React.Component {
       } 
 
       this.props.actions(currentUser.id)
+        document.body.style.backgroundColor = "#e5ffe5";
   }
   
   render() {
       
       return (
-        <div> 
-          <h3>Decisions </h3> 
-              <AddDecision currentUser={this.state.currentUser} />                                 
-          
+        <Grid> 
+          <Row> 
+            <Col md={3} /> 
+            <Col md={6}>
+              <h3>Questions </h3> 
+              <AddDecision currentUser={this.state.currentUser} />                                           
             <br />                           
-            <div> 
-             {this.props.decisions.length > 0 ? <DecisionList decisions={this.props.decisions} currentUser={this.state.currentUser} /> : <h4>Nothing yet...</h4>}  
-            </div>   
-
+             <ul>
+              {this.props.decisions.length > 0 ? <DecisionList decisions={this.props.decisions} currentUser={this.state.currentUser} /> : <h4>Nothing yet...</h4>}  
+             </ul> 
+            </Col> 
+            <Col md={3} /> 
+          </Row>
            
-        </div>
+        </Grid>
       )   
     }
    

@@ -6,6 +6,7 @@ import {
  Route,
  Redirect
 } from 'react-router-dom'
+import { Form, FormGroup, ControlLabel, Col, FormControl, Button, Grid, Row } from 'react-bootstrap'
 import  Items  from './Items'
 import { FormErrors } from './FormErrors';
 
@@ -17,13 +18,12 @@ class AddItem extends Component {
         super(props)
            this.state = {          
             category: 'pro', 
-            formErrors: {description: ''},
-            descriptionValid: false,
-            weightValid: false,
-            categoryValid: false,
-            formValid: false, 
+             
             description: '', 
-            weight: ''
+            weight: '',
+            weightValid: false, 
+            descriptionValid: false, 
+            formValid: false
            
         }
     }
@@ -37,6 +37,8 @@ class AddItem extends Component {
         currentUser: currentUser,     
         }) 
       }  
+
+
     } 
 
     handleInputChange(event) {
@@ -45,7 +47,7 @@ class AddItem extends Component {
 
         this.setState({
             [name]: value,
-        }, () => { this.validateField(name, value) });
+        },  () => { this.validateField(name, value) });
     }
 
     handleOnSubmit(event){
@@ -55,89 +57,87 @@ class AddItem extends Component {
       this.props.addItem(this.state.currentUser.id, this.props.decision, item)
 
     
-      this.setState({
-        weight: 0, 
-        descrption: '', 
-        formValid: false
-      })
-
         event.target.reset()
-
-     
+        this.setState({
+          description: '', 
+          weight: 0, 
+          formValid: false
+        })
 
    }
 
     validateField(fieldName, value) {
-      let fieldValidationErrors = this.state.formErrors;
+      
       let descriptionValid = this.state.descriptionValid;
       let weightValid = this.state.weightValid;
-      let categoryValid = this.state.categoryValid;
     
       switch(fieldName) {
         case 'description':
-          descriptionValid = value.length > 0; 
-          fieldValidationErrors.description = descriptionValid ? '' : ' must include a description';
-          
+          descriptionValid = value.length > 0;           
          case 'weight':
           weightValid = value > 0; 
-          fieldValidationErrors.weight = weightValid ? '' : ' must include a weight';
-         
-       
         default:
           
     }
-      this.setState({formErrors: fieldValidationErrors,
+      this.setState({
         descriptionValid: descriptionValid,  
-        weightValid: weightValid,            
-        categoryValid: categoryValid,      
+        weightValid: weightValid,
       }, this.validateForm);
   }
 
-    validateForm() {
-     
-       var vStatus = (this.state.weightValid == false || this.state.descriptionValid == false) ? false : true
-       console.log('this.state.weightValid', !this.state.weightValid)
-       console.log('this.state.descriptionValid', !this.state.descriptionValid)
-       console.log(vStatus)
-
-      this.setState({formValid: vStatus, 
-
-            });
+   validateForm() {
+     debugger
+      if (!this.state.descriptionValid  || !this.state.weightValid ) {
+        this.setState({
+          formValid: false
+        });
+      } else {
+         this.setState({
+          formValid: true
+        })
+      }
     }
-
-    errorClass(error) {
-      return(error.length === 0 ? '' : 'has-error');
-    }
-
 
     render() {
          
          
         return (
           <div>
-                 <FormErrors formErrors={this.state.formErrors} />
-                  <form onSubmit={this.handleOnSubmit.bind(this)}>
-                    <input
-                      type="text"
-                      name="description"
-                      onChange={(event) => this.handleInputChange(event)}              
-                      placeholder="Description"/>
-
-                     <input
+                 
+                  <form inline onSubmit={this.handleOnSubmit.bind(this)}>
+                    <FormGroup >
+                      <FormControl                        
+                        type="text"
+                        name="description"
+                        onChange={(event) => this.handleInputChange(event)}              
+                        placeholder="Description"/>
+                     </FormGroup>     
+                 
+                     
+                     <FormGroup className="item-form-weight">
+                     <FormControl                      
                       type="number"
                       name="weight"
                       onChange={(event) => this.handleInputChange(event)}              
                       placeholder="Weight"/>
+                      </FormGroup> 
+                     <FormGroup className="item-form-category">
 
-                      <select name="category" value = {this.state.category} onChange={(event) => this.handleInputChange(event)} >
-          <option value="pro">pro</option>
-          <option value="con">con</option>
-        </select>
+                       <FormControl 
+                       componentClass="select" 
+                        name="category" 
+                        value = {this.state.category} 
+                        onChange={(event) => this.handleInputChange(event)} >                      
+                          <option value="pro">pro</option>
+                          <option value="con">con</option>
+                      </FormControl>
+                        </FormGroup>
                     
                   
-                  <button type="submit" disabled={!this.state.formValid}>Submit </button>
-                </form>      
-
+    
+                
+  <Button type="submit" disabled={!this.state.formValid}>Submit </Button>              
+   </form>
                 
 
 

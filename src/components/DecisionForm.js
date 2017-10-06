@@ -5,7 +5,7 @@ import { addDecision } from '../actions/decisionActions.js'
 import {
  Redirect
 } from 'react-router-dom'
-
+import { Form, FormGroup, ControlLabel, Col, FormControl, Button, Grid, Row } from 'react-bootstrap'
 
 
 
@@ -20,6 +20,11 @@ class AddDecision extends Component {
             formValid: false
 
         }
+    }
+
+    componentDidMount() {
+      
+       document.body.style.backgroundColor = "#e5ffe5";
     }
 
    
@@ -76,24 +81,18 @@ class AddDecision extends Component {
     render() {
         
         return (
-          <div>
           
-                  <form onSubmit={this.handleOnSubmit.bind(this)}>
-                    <input
-                      type="text"
-                      name="title"
-                      onChange={(event) => this.handleInputChange(event)}              
-                      placeholder="Title"/>
-                    
-                  
-                  <button type="submit" disabled={!this.state.formValid} >Submit </button>
+          <div> 
+              <form onSubmit={this.handleOnSubmit.bind(this)}>
+                <FormGroup>
+                <FormControl
+                  type="text"
+                  name="title"
+                  onChange={(event) => this.handleInputChange(event)}              
+                  placeholder="Enter a question"/>
+                </FormGroup>
+                  <Button type="submit" disabled={!this.state.formValid} >Submit </Button>
                 </form>      
-
-              
-
-                
-
-
               
         </div>
       )

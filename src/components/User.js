@@ -7,6 +7,7 @@ import {
 import { bindActionCreators } from 'redux'
 import { loginUser } from '../actions/userActions.js'
 import Decision from './Decision.js'
+import { Form, FormGroup, ControlLabel, Col, FormControl, Button, Grid, Row } from 'react-bootstrap'
 
 
 class User extends React.Component {
@@ -41,15 +42,17 @@ class User extends React.Component {
       	)
     } else 
     return (
-      <div>
-        <h1> {this.state.currentUser.username} </h1> 
-        <div> 
+      <Grid>
+        <Row>
+          <Col md={12}>
+            <h2> Welcome, {this.state.currentUser.username} </h2> 
+          </Col>
+        </Row>
+        <Row> 
           <Decision /> 
-        </div> 
+        </Row> 
+      </Grid>
 
-	  </div>
-        
-	      
     );
   }
 }

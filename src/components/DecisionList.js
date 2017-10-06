@@ -9,37 +9,25 @@ import {
   Link, 
   render
 } from 'react-router-dom'
-
+import { Col, Button, Grid, Row, ButtonToolbar} from 'react-bootstrap'
 import { deleteDecision } from '../actions/decisionActions.js'
+
 
 class DecisionList extends Component {
 
 
- constructor(props) {
+    constructor(props) {
         super(props)
 
-         this.state = {
-          currentDecision: ''
-        }
+        
     }
 
     componentDidMount() {
-    	this.setCurrentDecision()
-    }	
-
-    setCurrentDecision() {
-        this.setState({
-            currentDecision: this.props.decisions[0]
-        })
+      
+       document.body.style.backgroundColor = "#e5ffe5";
     }
 
-    setDecision(id) {
-        const currentDecision = this.props.decisions.filter(decision => decision.id === id)[0]
-        this.setState({
-            currentDecision
-        })
-    }
-
+    
      handleClick(decision) {
         
         this.props.deleteDecision(this.props.currentUser.id, decision)
@@ -50,13 +38,18 @@ class DecisionList extends Component {
  	render() {
   	
 		const decisions_map = this.props.decisions.map((decision) => (
-        
-            <div>
-              <p key={decision.id} onClick={() => this.setDecision(decision.id)} >
+       <li className="decision-list" key={decision.id} > 
+            <Row>
+              <Col md={7}>
+              
                 <Link to={`/decisions/${decision.id}`} > {decision.title}  </Link> 
-                <button type="submit" onClick={() => this.handleClick(decision)}>Delete</button>                    
-              </p>   
-            </div>   
+              </Col> 
+              <Col md={5}>   
+                  <Button className="decision-list-delete" bsSize="xsmall" onClick={() => this.handleClick(decision)}>Delete</Button>                    
+              </Col>  
+              
+            </Row>   
+            </li>   
         ))    
   
   	return (
