@@ -65,7 +65,7 @@ class Items extends Component {
     var conWeightsSum =   conWeightsNum.reduce(function(a,b) {    
       return a + b;}, 0)
 
-    var adviceGiven = proWeightsSum > conWeightsSum ? "Do it!" : "Don't do it!"
+    var adviceGiven = proWeightsSum > conWeightsSum ? "Do it!" : proWeightsSum == conWeightsSum ? "Enter an Item to Break the Tie!" : "Don't do it!"
 
   	return (
           <Grid> 

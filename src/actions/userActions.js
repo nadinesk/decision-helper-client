@@ -12,7 +12,7 @@ const receivedDecisions = decisions => {
 export function signupUser(user) {      
   
   return function(dispatch) {        
-    return fetch('http://localhost:3200/api/v1/users', {
+    return fetch('https://stark-garden-80644.herokuapp.com/api/v1/users', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -39,7 +39,7 @@ export function signupUser(user) {
 export function loginUser(user) {      
   
   return function(dispatch) {        
-    return fetch('http://localhost:3200/api/v1/login', {
+    return fetch('https://stark-garden-80644.herokuapp.com/api/v1/login', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

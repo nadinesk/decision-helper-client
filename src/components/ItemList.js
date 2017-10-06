@@ -52,7 +52,7 @@ class ItemList extends Component {
   
   	return (
         
-        <Row >
+        <Row className="item-list">
             
             <Col md={12}>
             <h3> Pros </h3>

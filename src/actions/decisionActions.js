@@ -12,7 +12,7 @@ export function fetchDecisions(user_id) {
 
   return function(dispatch){    
     //dispatch({type: 'FETCH_BOOKS'})
-    return fetch(`http://localhost:3200/api/v1/users/${user_id}/decisions`)      
+    return fetch(`https://stark-garden-80644.herokuapp.com/api/v1/users/${user_id}/decisions`)      
       .then(res =>  res.json())
       .then(decisions => {                     
         dispatch(receivedDecisions(decisions.decisions))        
@@ -25,7 +25,7 @@ export function fetchDecisions(user_id) {
 export function addDecision(user_id, decision) {      
   return function(dispatch) {    
     dispatch({type: 'POST_DECISION'})
-    return fetch(`http://localhost:3200/api/v1/users/${user_id}/decisions`, {
+    return fetch(`https://stark-garden-80644.herokuapp.com/api/v1/users/${user_id}/decisions`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -48,7 +48,7 @@ export function deleteDecision(user_id, decision) {
   const decision_id = decision.id
   return function(dispatch) {        
      
-     return fetch(`http://localhost:3200/api/v1/users/${user_id}/decisions/${decision_id}`,  {
+     return fetch(`https://stark-garden-80644.herokuapp.com/api/v1/users/${user_id}/decisions/${decision_id}`,  {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
