@@ -6,13 +6,14 @@ import {
 import Signup from './components/Signup'
 import Login from './components/Login'
 import Home from './components/Home'
-import NavBar from './components/NavBar'
+import Navigation from './components/Navigation'
 import LinkPage from './components/LinkPage'
 import User from './components/User'
 import Decision from './components/Decision'
 import AddDecision from './components/DecisionForm'
 import Items from './components/Items'
 import { connect } from 'react-redux'
+
 import { bindActionCreators } from 'redux'
 
 import './App.css';
@@ -53,7 +54,7 @@ class App extends Component {
     return (
          <Router>
           <div> 
-            <NavBar loggedin ={logs} currentUser = {cu} /> 
+            <Navigation loggedin ={logs} currentUser = {cu} /> 
           
 
             

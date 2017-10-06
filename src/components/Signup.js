@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {
-  
+import {  
   Redirect
 } from 'react-router-dom'
+import { Form, FormGroup, ControlLabel, Col, FormControl, Button, Grid, Row } from 'react-bootstrap'
 import { signupUser } from '../actions/userActions.js'
 
 
@@ -19,6 +19,11 @@ class Signup extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+      
+       document.body.style.backgroundColor = "#e5ffe5";
+  }
+
   handleChange(event) {
     this.setState({username: event.target.value});
   }
@@ -30,34 +35,75 @@ class Signup extends React.Component {
     
   }
 
-  render() {
-    console.log('this.props.user.redirect', this.props.user.redirect)
 
+
+  render() {
     if (this.props.user.redirect) {
     	return  <Redirect to = '/login' /> 
     } else if (this.props.user.error) {
       return (
-      <div> 
+      <Grid>
+        <Row>  
+         <Col md={3} /> 
+        <Col md={6}>
+        <h2> Sign Up </h2> 
         <h3 className="errorText"> Duplicate User Name </h3> 
-      <form onSubmit={this.handleSubmit}>
-        <label className="error_box">
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-      </div> 
+        <form onSubmit={this.handleSubmit}>
+        
+          <FormGroup >
+            <label className="error_box">              
+              <Col sm={10}>
+                <FormControl label="Username" type="text" value={this.state.value} placeholder="Enter Username" onChange={this.handleChange} />
+              </Col>
+            </label>
+          </FormGroup>
+          <FormGroup>
+          
+            
+              <Button type="submit">
+                Sign in
+              </Button>
+            
+          </FormGroup>
+        
+        </form> 
+         </Col>
+        <Col md={3} /> 
+      </Row> 
+      </Grid> 
     );      
     } else
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+       <Grid>
+       <Row>  
+        <Col md={3} /> 
+        <Col md={6}>
+        
+        <h2> Sign Up </h2> 
+        
+       <form onSubmit={this.handleSubmit}>
+        
+          <FormGroup bsSize="large">
+            
+                <FormControl label="Username" type="text" value={this.state.value} placeholder="Enter Username" onChange={this.handleChange} />
+            
+            
+          </FormGroup>
+          
+          <FormGroup>
+            
+              <Button type="submit">
+                Sign in
+              </Button>
+            
+          </FormGroup>
+          
+        </form> 
+        </Col>
+        <Col md={3} /> 
+        </Row> 
+        </Grid> 
     );
   }
 }

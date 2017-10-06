@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: center;  
 }
 
 .App-logo {
@@ -28,10 +28,12 @@
 }
 
 
-.error_box {
-  border: 1px solid red;
-}
 
 .errorText {
   color: red;
+}
+
+.mainTitle {
+  font-size: 5em;
+  margin-top: 50%;
 }

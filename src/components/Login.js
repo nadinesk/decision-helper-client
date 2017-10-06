@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {
-  
   Redirect
 } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
+import { Form, FormGroup, ControlLabel, Col, FormControl, Button, Grid, Row } from 'react-bootstrap'
 import { loginUser } from '../actions/userActions.js'
 
 
@@ -23,6 +23,9 @@ class Signup extends React.Component {
     this.setState({
       currentUser: currentUser
     })  
+
+    document.body.style.backgroundColor = "#e5ffe5";
+  
   }
   
 
@@ -41,17 +44,24 @@ class Signup extends React.Component {
       return  <Redirect to = '/home' /> 
     } else 
     return (
-      <div>
-	      <h1> Login page </h1> 
-        
-	      <form onSubmit={this.handleSubmit}>
-	        <label>
-	          Name:
-	          <input type="text" value={this.state.value} onChange={this.handleChange} />
-	        </label>
-	        <input type="submit" value="Submit" />
+      <Grid>
+        <Row> 
+          <Col md={3} /> 
+          <Col md={6}>
+	         <h2> Login </h2>         
+	           <form onSubmit={this.handleSubmit}>
+	          <FormGroup bsSize="large">
+	          <FormControl type="text" value={this.state.value} placeholder="Username" onChange={this.handleChange} />
+	          </FormGroup>
+            <FormGroup>
+	        <Button type="submit">Login </Button>
+          </FormGroup>
+          
 	      </form>
-	 </div>
+        </Col> 
+          <Col md={3} /> 
+          </Row> 
+	 </Grid>
     );
   }
 }

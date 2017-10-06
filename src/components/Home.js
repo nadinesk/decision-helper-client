@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form, FormGroup, ControlLabel, Col, FormControl, Button, Grid, Row } from 'react-bootstrap'
 
 
 class Home extends React.Component {
@@ -19,6 +20,7 @@ class Home extends React.Component {
 	    this.setState({
 	      currentUser: currentUser
 	    })  
+       document.body.style.backgroundColor = "#e5ffe5";
 	}
   
   handleOnClick() {
@@ -28,12 +30,17 @@ class Home extends React.Component {
   }
   
   render() {
-  	  console.log('home currentUser', this.state)	
+  	  
       return (
-      <div> 
-        <h3 className="errorText"> Welcome </h3> 
-        
-       </div> 
+      <Grid> 
+        <Row> 
+          <Col md={4}/>
+          <Col md={4}>
+            <h1 class="mainTitle"> DECIDER </h1> 
+          </Col>
+          <Col md={4}/>
+        </Row>
+       </Grid> 
   
     );
   }
