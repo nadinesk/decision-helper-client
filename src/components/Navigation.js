@@ -27,7 +27,7 @@ class Navigation extends Component {
         <Navbar>
           <Navbar.Header> 
             <Navbar.Brand> 
-              <a href="/">Decide</a>
+              <a href="/">Decider</a>
             </Navbar.Brand> 
           </Navbar.Header> 
          
