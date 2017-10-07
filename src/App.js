@@ -12,6 +12,7 @@ import User from './components/User'
 import Decision from './components/Decision'
 import AddDecision from './components/DecisionForm'
 import Items from './components/Items'
+import About from './components/About'
 import { connect } from 'react-redux'
 
 import { bindActionCreators } from 'redux'
@@ -66,6 +67,7 @@ class App extends Component {
               <Route exact path="/decisions" component={Decision} />
               <Route path="/decisions/:id" component={Items} />
               <Route exact path="/decision/new" component={AddDecision} />
+              <Route exact path="/about" component={About} />
             </div> 
     
           </Router>

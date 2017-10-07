@@ -55,7 +55,7 @@ class ItemList extends Component {
         <Row className="item-list">
             
             <Col md={12}>
-            <h3> Pros </h3>
+            <h3 className="category-header"> Pros </h3>
             <Table condensed hover>
                 <thead>
                   <tr>
@@ -70,7 +70,7 @@ class ItemList extends Component {
             </Col>
             
             <Col md={12}>
-            <h3> Cons </h3>
+            <h3 className="category-header"> Cons </h3>
             <Table  condensed hover>
                 <thead>
                   <tr>

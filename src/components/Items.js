@@ -84,19 +84,19 @@ class Items extends Component {
              <Row > 
               <Col md={2}/>
               <Col  md={4}>             
-                <h3> Pros Weight Total: {proWeightsSum} </h3>                                             
+                <h3 className="category-header"> Pros Weight Total: {proWeightsSum} </h3>                                             
 
               </Col>
 
               <Col  md={4}>             
-                <h3> Cons Weight Total: {conWeightsSum} </h3>    
+                <h3 className="category-header"> Cons Weight Total: {conWeightsSum} </h3>    
               </Col>
               <Col md={2}/>
               </Row>
               <Row> 
                 <Col md={2}/>
-                <Col className="item-list" md={8}>
-                  <h3> Advice: {adviceGiven} </h3>                                             
+                <Col  md={8}>
+                  <h1 className="advice-given"> Advice: {adviceGiven} </h1>                                             
                 </Col> 
                 <Col md={2}/>
               </Row>

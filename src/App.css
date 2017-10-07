@@ -52,7 +52,7 @@ ul {
 }
 
 a {
-  color: black;
+  color: #ff9898;
 }
 
 .decision-list-delete, .item-list-delete {
@@ -88,4 +88,13 @@ hr {
 
 .item-form-weight, .item-form-category {
   width: 10%;
+}
+
+.category-header {
+  color: #ff9898 ;
+}
+
+.advice-given {
+  color:#ff9898 ;
+  padding-bottom: 5%;
 }

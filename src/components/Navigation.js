@@ -37,11 +37,13 @@ class Navigation extends Component {
                 <NavItem href="/decisions"> Decisions </NavItem>
                 <NavItem href="/user"> {this.props.currentUser.username}</NavItem>
                 <NavItem href="/" onClick={this.handleLogout}>Log Out</NavItem>
+                <NavItem href="/about" >About</NavItem>
               </Nav>
             :
               <Nav>
                 <NavItem href="/signup">Signup</NavItem>
                 <NavItem href="/login">Login</NavItem>
+                <NavItem href="/about" >About</NavItem>
               </Nav>  
           }
           
