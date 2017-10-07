@@ -52,13 +52,9 @@ class App extends Component {
 
   render() {
     const cu = (!this.props.currentUser) ? this.state.currentUser : this.props.currentUser
-    const logs = (this.state.currentUser || this.props.currentUser ) ?  true : false
+    const logs = (this.state.currentUser !== '' || this.props.currentUser ) ?  true : false
 
-    
-    console.log('this.state', this.state)
-    console.log('cu', cu)
-    console.log('logs', logs)
-    
+
     return (
          <Router>
           <div> 
