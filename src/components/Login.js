@@ -41,7 +41,7 @@ class Signup extends React.Component {
 
   render() {
     if (this.state.currentUser || this.props.currentUser) {
-      return  <Redirect to = '/home' /> 
+      return  <Redirect to = '/' /> 
     } else 
     return (
       <Grid>
