@@ -43,7 +43,13 @@ class Decision extends React.Component {
   }
   
   render() {
-      
+        if (!this.state.currentUser) {
+      return  (
+        <div> 
+          <h3> You must be logged in to see this page </h3> 
+        </div>
+        )
+    } else 
       return (
         <Grid> 
           <Row> 
