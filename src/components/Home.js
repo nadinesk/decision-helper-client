@@ -8,16 +8,9 @@ class Home extends React.Component {
      this.state = {currentUser: '', 
 				  
 				  };
-
-
-   
   }
   
   componentDidMount() {
-	  	const current_user_string = localStorage.getItem('current_user')
-	    
-	    
-	  
        document.body.style.backgroundColor = "#e5ffe5";
 	}
   

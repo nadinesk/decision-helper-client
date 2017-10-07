@@ -22,15 +22,25 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-	const current_user_string = localStorage.getItem('current_user')
+	
+         if (typeof localStorage === 'object') {        
+          try {         
+   const current_user_string = localStorage.getItem('current_user')
     var currentUser = JSON.parse(current_user_string)
    
     if (currentUser) {
       this.setState({
-      	currentUser: currentUser, 
-      	loggedin: true
+        currentUser: currentUser, 
+        loggedin: true
       }) 
     } 
+
+          } catch (e) {
+        alert('Your web browser does not support storing settings locally. In Safari, the most common cause of this is using "Private Browsing Mode". Some settings may not save or some features may not work properly for you.');
+          }
+        }
+
+  
   }
   
   render() {
