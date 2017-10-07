@@ -10,24 +10,18 @@ class Home extends React.Component {
 				  };
 
 
-   this.handleOnClick = this.handleOnClick.bind(this);
+   
   }
   
   componentDidMount() {
 	  	const current_user_string = localStorage.getItem('current_user')
-	    const currentUser = JSON.parse(current_user_string)
 	    
-	    this.setState({
-	      currentUser: currentUser
-	    })  
+	    
+	  
        document.body.style.backgroundColor = "#e5ffe5";
 	}
   
-  handleOnClick() {
-  	  localStorage.removeItem('current_user')
 
-
-  }
   
   render() {
   	  

@@ -53,8 +53,16 @@ export function loginUser(user) {
         console.log('responseJson', responseJson.user)
         if (!responseJson.error)  {
           dispatch({type: 'LOGIN_SUCCESS', user: responseJson.user }) 
+          if (typeof localStorage === 'object') {
+          debugger
+          try {         
           localStorage.setItem('current_user', JSON.stringify(responseJson.user))
-          
+          } catch (e) {
+            Storage.prototype._setItem = Storage.prototype.setItem;
+        Storage.prototype.setItem = function() {};
+        alert('Your web browser does not support storing settings locally. In Safari, the most common cause of this is using "Private Browsing Mode". Some settings may not save or some features may not work properly for you.');
+          }
+        }
         } else {
           dispatch({type: 'LOGIN_FAILURE', error: responseJson.error })
         }

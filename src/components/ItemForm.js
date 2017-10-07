@@ -86,7 +86,7 @@ class AddItem extends Component {
   }
 
    validateForm() {
-     debugger
+     
       if (!this.state.descriptionValid  || !this.state.weightValid ) {
         this.setState({
           formValid: false
