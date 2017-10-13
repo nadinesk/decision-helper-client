@@ -6,7 +6,7 @@ This front-end was build with
 * [React](https://reactjs.org/) to render components; 
 * [Redux](http://redux.js.org/) and [react-redux](https://github.com/reactjs/react-redux) to manage the application's state; 
 * [Redux Thunk](https://github.com/gaearon/redux-thunk) to make asynchronous calls to the backend API; and 
-* [React Router] for dynamic routing. 
+* [React Router](https://reacttraining.com/react-router/) for dynamic routing. 
 
 ## Contributing
 
