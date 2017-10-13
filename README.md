@@ -1,6 +1,6 @@
 ## Overview
 
-This is the front-end for the Decider App, deployed on Heroku [here]((http://thawing-reaches-13962.herokuapp.com/) to demo and play around with. The back-end Rails API code is [here](https://github.com/nadinesk/decision-helper-api). 
+This is the front-end for the Decider App, deployed on Heroku [here](http://thawing-reaches-13962.herokuapp.com/) to demo and play around with. The back-end Rails API code is [here](https://github.com/nadinesk/decision-helper-api). 
 
 This front-end was build with 
 * [React](https://reactjs.org/) to render components; 
