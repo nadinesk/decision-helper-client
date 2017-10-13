@@ -1,12 +1,14 @@
 ## Overview
 
-This is the front-end for the Decider App, deployed on Heroku [here](http://thawing-reaches-13962.herokuapp.com/) to demo and play around with. The back-end Rails API code is [here](https://github.com/nadinesk/decision-helper-api). 
+This is the front-end for the Decider App, deployed on Heroku [here](http://thawing-reaches-13962.herokuapp.com/). The back-end Rails API code is [here](https://github.com/nadinesk/decision-helper-api). 
 
 This front-end was build with 
 * [React](https://reactjs.org/) to render components; 
 * [Redux](http://redux.js.org/) and [react-redux](https://github.com/reactjs/react-redux) to manage the application's state; 
 * [Redux Thunk](https://github.com/gaearon/redux-thunk) to make asynchronous calls to the backend API; and 
 * [React Router](https://reacttraining.com/react-router/) for dynamic routing. 
+
+The Decider helps user make decisions by allowing them to log in, add a question about which they are trying to make a decision, and add pros and cons with weights, for their questions.
 
 ## Contributing
 
